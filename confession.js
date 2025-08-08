@@ -7,12 +7,13 @@ const stage2        = document.getElementById('stage2');
 const confessionImg = document.getElementById('confessionImg');
 const overlay       = document.getElementById('overlay');
 
-const stage3  = document.getElementById('stage3');
-const nextImg = document.getElementById('nextImg');
+const stage3   = document.getElementById('stage3');
+const nextImg  = document.getElementById('nextImg');
 const overlay3 = document.getElementById('overlay3');
 
 // ---------- DIALOGUE ----------
-const lines2 = ["Hi Sts!!",
+const lines2 = [
+  "Hi Sts!!",
   "I wanted to tell you something",
   "For a long time, I couldn't tell you this"
 ];
@@ -31,6 +32,16 @@ let readyForStage2 = false;   // after greeting typed
 
 let idx2 = 0;
 let idx3 = 0;
+
+// ---------- MOBILE VIEWPORT FIX (older iOS) ----------
+function setVHVar() {
+  // Sets --vh to the actual innerHeight so calc(var(--vh)*100) = full visible height
+  const vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
+}
+setVHVar();
+window.addEventListener('resize', setVHVar);
+window.addEventListener('orientationchange', setVHVar);
 
 // ---------- HELPERS ----------
 function setActive(stageNum) {
@@ -79,12 +90,14 @@ function advanceStage3() {
 function startStage2() {
   setActive(2);
   idx2 = 0;
+  overlay.textContent = "";
   advanceStage2();
 }
 
 function startStage3() {
   setActive(3);
   idx3 = 0;
+  overlay3.textContent = "";
   advanceStage3();
 }
 
@@ -99,8 +112,9 @@ document.addEventListener('pointerdown', () => {
       initialText.textContent = "";
       initialImg.src = initialImg.dataset.anim;
 
-      // After 3s, type greeting; then allow next tap to go to Stage 2
+      // After ~3.5s, (optionally) type a greeting; then allow next tap to go to Stage 2
       setTimeout(() => {
+        // If you want a greeting here, put text instead of "" below
         typeLine("", initialText, () => {
           readyForStage2 = true;
         });
@@ -129,9 +143,9 @@ document.addEventListener('pointerdown', () => {
     if (idx3 < lines3.length) {
       advanceStage3();
     }
-    // else: end (you can add a final screen or restart here)
+    // else: end (add final screen or restart here)
   }
-});
+}, { passive: true });
 
 // ---------- INITIAL PROMPT ----------
 window.addEventListener('load', () => {
