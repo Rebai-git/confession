@@ -1,45 +1,56 @@
 /* Pixel font */
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
+* { box-sizing: border-box; }
+
 html, body {
-  margin: 0; padding: 0;
-  width: 100%; height: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
   background: #000;
   overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: block;
+  -webkit-text-size-adjust: 100%;
 }
 
-/* Center each stage; show only the active one */
+/* Fill the visible viewport on mobile safely */
 .stage {
-  position: absolute;
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
+  position: fixed;
+  inset: 0;
   display: none;
   align-items: center;
   justify-content: center;
+  /* Fallback for older iOS via --vh variable, then modern dvh kicks in */
+  height: calc(var(--vh, 1vh) * 100);
+  height: 100dvh;
+  width: 100vw;
 }
 .stage.active { display: flex; }
 
-/* Image sizing */
+/* Image fits entirely in view, no cropping */
 .stage img {
+  width: 100vw;
+  height: 100dvh;
+  object-fit: contain;
   display: block;
-  max-width: 90vw;
-  max-height: 80vh;
+  -webkit-user-drag: none;
+  user-select: none;
+  pointer-events: none; /* taps go through to stage */
 }
 
 /* Text overlay INSIDE the frame (bottom-center) */
 .pixel-text {
   position: absolute;
-  bottom: 12px;
   left: 50%;
   transform: translateX(-50%);
-  width: 90%;
-  box-sizing: border-box;
+  bottom: calc(env(safe-area-inset-bottom) + 12px);
+  width: min(92vw, 900px);
+  padding: 0 8px;
 
   font-family: 'Press Start 2P', monospace;
-  font-size: 14px;
+  font-size: clamp(12px, 3.2vw, 18px);
+  line-height: 1.4;
   color: #fff;
   text-shadow: 1px 1px 0 rgba(0,0,0,0.7);
   text-align: center;
@@ -61,3 +72,9 @@ html, body {
 
 /* No cursor on Stage 1 prompts */
 #initialText::after { content: none; }
+
+/* Improve touch feel */
+html, body {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
