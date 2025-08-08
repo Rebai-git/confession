@@ -19,8 +19,7 @@ html, body {
   align-items: center;
   justify-content: center;
   height: calc(var(--vh, 1vh) * 100); /* iOS fallback (set via JS) */
-  height: 100dvh;                     /* modern browsers */
-}
+  height: 100dvh;                     /* modern browsers */}
 .stage.active{ display: flex; }
 
 /* Frame is exactly the viewport; text is relative to this */
