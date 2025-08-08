@@ -5,43 +5,52 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
   <meta name="theme-color" content="#000000"/>
   <title>Interactive Confession</title>
+
+  <!-- Pixel font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
 
   <!-- STAGE 1: static → anim, greeting -->
   <div id="stage1" class="stage active">
-    <img
-      id="initialImg"
-      src="https://i.imgur.com/amFj672.png"
-      data-anim="https://media3.giphy.com/media/FUuDOkEO6YHIsGKzHn/giphy.gif"
-      alt="Frozen scene"
-      draggable="false"/>
-    <div id="initialText" class="pixel-text"></div>
+    <div class="frame">
+      <img
+        id="initialImg"
+        src="https://i.imgur.com/amFj672.png"
+        data-anim="https://media3.giphy.com/media/FUuDOkEO6YHIsGKzHn/giphy.gif"
+        alt="Frozen scene" draggable="false"/>
+      <div id="initialText" class="pixel-text"></div>
+    </div>
   </div>
 
-  <!-- STAGE 2: confession (set your own still/anim) -->
+  <!-- STAGE 2: confession -->
   <div id="stage2" class="stage">
-    <img
-      id="confessionImg"
-      src="https://i.imgur.com/opjXjNv.png"
-      data-static="https://i.imgur.com/opjXjNv.png"
-      data-anim="https://media.giphy.com/media/V8uqR9RbLTik2KI0Xb/giphy.gif"
-      alt="Animated confession"
-      draggable="false"/>
-    <div id="overlay" class="pixel-text"></div>
+    <div class="frame">
+      <img
+        id="confessionImg"
+        src="https://i.imgur.com/opjXjNv.png"
+        data-static="https://i.imgur.com/opjXjNv.png"
+        data-anim="https://media.giphy.com/media/V8uqR9RbLTik2KI0Xb/giphy.gif"
+        alt="Animated confession" draggable="false"/>
+      <div id="overlay" class="pixel-text"></div>
+    </div>
   </div>
 
   <!-- STAGE 3: same behavior as Stage 2 but different GIF -->
   <div id="stage3" class="stage">
-    <img
-      id="nextImg"
-      src="https://i.imgur.com/9h0g6Rd.png"
-      data-static="https://i.imgur.com/9h0g6Rd.png"
-      data-anim="https://media.giphy.com/media/mFESB4ceOiu1Xzoiix/giphy.gif"
-      alt="Next stage"
-      draggable="false"/>
-    <div id="overlay3" class="pixel-text"></div>
+    <div class="frame">
+      <img
+        id="nextImg"
+        src="https://i.imgur.com/9h0g6Rd.png"
+        data-static="https://i.imgur.com/9h0g6Rd.png"
+        data-anim="https://media.giphy.com/media/mFESB4ceOiu1Xzoiix/giphy.gif"
+        alt="Next stage" draggable="false"/>
+      <div id="overlay3" class="pixel-text"></div>
+    </div>
   </div>
 
   <script src="confession.js"></script>
