@@ -50,27 +50,26 @@ html, body {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  bottom: calc(env(safe-area-inset-bottom) + 12px);
+  bottom: calc(env(safe-area-inset-bottom) + 16px);
   width: 100%;
   padding: 0 8px;
 
   font-family: 'Press Start 2P', monospace;
-  line-height: 1.35;
+  line-height: 1.4;
   color: #fff;
   text-align: center;
-  text-shadow: 1px 1px 0 rgba(0,0,0,0.7);
+  text-shadow: 2px 2px 0 rgba(0,0,0,0.8);
   white-space: normal;
   overflow-wrap: break-word;
   pointer-events: none;
 
   -webkit-font-smoothing: none;   /* keep pixel look */
-  font-size: 10px;                /* slightly smaller */
+  font-size: 14px;                /* bigger base */
 }
-@media (min-width: 360px){ .pixel-text{ font-size: 11px; } }
-@media (min-width: 400px){ .pixel-text{ font-size: 12px; } }
-@media (min-width: 480px){ .pixel-text{ font-size: 13px; } }
-@media (min-width: 560px){ .pixel-text{ font-size: 14px; } }
-
+@media (min-width: 360px){ .pixel-text{ font-size: 16px; } }
+@media (min-width: 400px){ .pixel-text{ font-size: 18px; } }
+@media (min-width: 480px){ .pixel-text{ font-size: 20px; } }
+@media (min-width: 560px){ .pixel-text{ font-size: 22px; } }
 /* Cursor for stage 2 & 3 only */
 #overlay::after, #overlay3::after{
   content: '|';
