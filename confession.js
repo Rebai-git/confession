@@ -33,9 +33,8 @@ let readyForStage2 = false;   // after greeting typed
 let idx2 = 0;
 let idx3 = 0;
 
-// ---------- MOBILE VIEWPORT FIX (older iOS) ----------
+// ---------- MOBILE VIEWPORT FALLBACK (older iOS) ----------
 function setVHVar() {
-  // Sets --vh to the actual innerHeight so calc(var(--vh)*100) = full visible height
   const vh = window.innerHeight * 0.01;
   document.documentElement.style.setProperty('--vh', `${vh}px`);
 }
@@ -108,16 +107,13 @@ document.addEventListener('pointerdown', () => {
     if (!playedStage1 && !typing) {
       playedStage1 = true;
 
-      // Clear "Touch here" immediately, play GIF
+      // Clear prompt, play GIF
       initialText.textContent = "";
       initialImg.src = initialImg.dataset.anim;
 
-      // After ~3.5s, (optionally) type a greeting; then allow next tap to go to Stage 2
+      // After ~3.5s, allow next tap to go to Stage 2
       setTimeout(() => {
-        // If you want a greeting here, put text instead of "" below
-        typeLine("", initialText, () => {
-          readyForStage2 = true;
-        });
+        typeLine("", initialText, () => { readyForStage2 = true; });
       }, 3500);
       return;
     }
@@ -132,8 +128,7 @@ document.addEventListener('pointerdown', () => {
     if (idx2 < lines2.length) {
       advanceStage2();
     } else {
-      // Finished Stage 2 → next stage
-      startStage3();
+      startStage3(); // Finished Stage 2 → Stage 3
     }
     return;
   }
@@ -143,12 +138,11 @@ document.addEventListener('pointerdown', () => {
     if (idx3 < lines3.length) {
       advanceStage3();
     }
-    // else: end (add final screen or restart here)
+    // else: end — add final screen/restart here if you want
   }
 }, { passive: true });
 
 // ---------- INITIAL PROMPT ----------
 window.addEventListener('load', () => {
-  // type "Touch here" inside Stage 1 frame
   typeLine("Touch here", initialText);
 });
