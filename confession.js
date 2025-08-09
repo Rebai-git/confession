@@ -18,20 +18,27 @@ const stage5   = document.getElementById('stage5');
 const stage5Img = document.getElementById('stage5Img');
 const overlay5 = document.getElementById('overlay5');
 
+const stage6   = document.getElementById('stage6');
+const stage6Img = document.getElementById('stage6Img');
+const overlay6 = document.getElementById('overlay6');
+
 // ---------- DIALOGUE ----------
 const lines2 = [
   "Hi Sts!!",
-  "I want to tell you something",
+  "I have something to tell you",
   "For a long time, I couldn't tell you this"
 ];
 const lines3 = [
   "I really really like you!"
 ];
 const lines4 = [
-  "I want to do a lot of thing for you."
+  "I want to do a lot of things for you"
 ];
 const lines5 = [
-  "I really want to listen to your yappings"
+  "I really want to listen to your yappings!!"
+];
+const lines6 = [
+  "I really want to support your fangirling!!" 
 ];
 
 // ---------- STATE ----------
@@ -46,8 +53,9 @@ let idx2 = 0;
 let idx3 = 0;
 let idx4 = 0;
 let idx5 = 0;
+let idx6 = 0;
 
-// ---------- Viewport fix  ----------
+// ---------- Viewport fix for iOS ----------
 function setVHVar() {
   const vh = window.innerHeight * 0.01;
   document.documentElement.style.setProperty('--vh', `${vh}px`);
@@ -58,12 +66,13 @@ window.addEventListener('orientationchange', setVHVar);
 
 // ---------- HELPERS ----------
 function setActive(stageNum) {
-  [stage1, stage2, stage3, stage4, stage5].forEach(s => s.classList.remove('active'));
+  [stage1, stage2, stage3, stage4, stage5, stage6].forEach(s => s.classList.remove('active'));
   if (stageNum === 1) stage1.classList.add('active');
   if (stageNum === 2) stage2.classList.add('active');
   if (stageNum === 3) stage3.classList.add('active');
   if (stageNum === 4) stage4.classList.add('active');
   if (stageNum === 5) stage5.classList.add('active');
+  if (stageNum === 6) stage6.classList.add('active');
   currentStage = stageNum;
 }
 
@@ -106,7 +115,12 @@ function advanceStage4() {
 function advanceStage5() {
   if (typing || idx5 >= lines5.length) return;
   stage5Img.src = stage5Img.dataset.anim; // loop GIF
-  typeLine(lines5[idx5], overlay5, () => { idx5++; }); // don't freeze
+  typeLine(lines5[idx5], overlay5, () => { idx5++; });
+}
+function advanceStage6() {
+  if (typing || idx6 >= lines6.length) return;
+  stage6Img.src = stage6Img.dataset.anim; // loop GIF
+  typeLine(lines6[idx6], overlay6, () => { idx6++; });
 }
 
 // ---------- STARTERS ----------
@@ -136,6 +150,11 @@ function startStage5() {
   setActive(5);
   idx5 = 0; overlay5.textContent = "";
   advanceStage5();
+}
+function startStage6() {
+  setActive(6);
+  idx6 = 0; overlay6.textContent = "";
+  advanceStage6();
 }
 
 // ---------- TAP HANDLER ----------
@@ -167,6 +186,11 @@ document.addEventListener('pointerdown', () => {
   }
   if (currentStage === 5 && !typing) {
     if (idx5 < lines5.length) advanceStage5();
+    else startStage6();
+    return;
+  }
+  if (currentStage === 6 && !typing) {
+    if (idx6 < lines6.length) advanceStage6();
     // else: end
   }
 }, { passive: true });
