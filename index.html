@@ -15,11 +15,10 @@
 </head>
 <body>
 
-  <!-- STAGE 1: static → anim, greeting -->
+  <!-- STAGE 1 -->
   <div id="stage1" class="stage active">
     <div class="frame">
-      <img
-        id="initialImg"
+      <img id="initialImg"
         src="https://i.imgur.com/amFj672.png"
         data-anim="https://media3.giphy.com/media/FUuDOkEO6YHIsGKzHn/giphy.gif"
         alt="Frozen scene" draggable="false"/>
@@ -27,11 +26,10 @@
     </div>
   </div>
 
-  <!-- STAGE 2: confession -->
+  <!-- STAGE 2 -->
   <div id="stage2" class="stage">
     <div class="frame">
-      <img
-        id="confessionImg"
+      <img id="confessionImg"
         src="https://i.imgur.com/opjXjNv.png"
         data-static="https://i.imgur.com/opjXjNv.png"
         data-anim="https://media.giphy.com/media/V8uqR9RbLTik2KI0Xb/giphy.gif"
@@ -40,16 +38,27 @@
     </div>
   </div>
 
-  <!-- STAGE 3: same behavior as Stage 2 but different GIF -->
+  <!-- STAGE 3 -->
   <div id="stage3" class="stage">
     <div class="frame">
-      <img
-        id="nextImg"
+      <img id="nextImg"
         src="https://i.imgur.com/9h0g6Rd.png"
         data-static="https://i.imgur.com/9h0g6Rd.png"
         data-anim="https://media.giphy.com/media/mFESB4ceOiu1Xzoiix/giphy.gif"
         alt="Next stage" draggable="false"/>
       <div id="overlay3" class="pixel-text"></div>
+    </div>
+  </div>
+
+  <!-- STAGE 4 (NEW) -->
+  <div id="stage4" class="stage">
+    <div class="frame">
+      <img id="finalImg"
+        src="https://imgur.com/Vl5QCnn.png"
+        data-static="https://imgur.com/Vl5QCnn.png"
+        data-anim="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExcW16YW0ybXhhY3hhNGhreXl4YmlyZ2NkZ3pseTlneGpjeTByb2E4dSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/9h8eVl1iiVmgHZTywi/giphy.gif"
+        alt="Final stage" draggable="false"/>
+      <div id="overlay4" class="pixel-text"></div>
     </div>
   </div>
 
