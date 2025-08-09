@@ -81,3 +81,8 @@ html, body {
 }
 @keyframes blink { 0%,49%{opacity:1;} 50%,100%{opacity:0;} }
 #initialText::after{ content: none; }
+
+#stage4 img {
+  object-fit: contain; /* show whole GIF, black bars if needed */
+}
+
