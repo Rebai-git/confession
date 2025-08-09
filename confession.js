@@ -101,7 +101,6 @@ function advanceStage4() {
   if (typing || idx4 >= lines4.length) return;
   finalImg.src = finalImg.dataset.anim;
   typeLine(lines4[idx4], overlay4, () => {
-    finalImg.src = finalImg.dataset.static;
     idx4++;
   });
 }
