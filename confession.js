@@ -25,20 +25,20 @@ const overlay6 = document.getElementById('overlay6');
 // ---------- DIALOGUE ----------
 const lines2 = [
   "Hi Sts!!",
-  "I have something to tell you",
+  "I wanted to tell you something",
   "For a long time, I couldn't tell you this"
 ];
 const lines3 = [
   "I really really like you!"
 ];
 const lines4 = [
-  "I want to do a lot of things for you"
+  "There are a lot of things I want to do for you."
 ];
 const lines5 = [
-  "I really want to listen to your yappings!!"
+  "First thing, I really want to listen to your yappings"
 ];
 const lines6 = [
-  "I really want to support your fangirling!!" 
+  "Second thing, I want to always be there for you"
 ];
 
 // ---------- STATE ----------
