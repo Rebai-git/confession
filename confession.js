@@ -47,7 +47,7 @@ let idx3 = 0;
 let idx4 = 0;
 let idx5 = 0;
 
-// ---------- Viewport fix for iOS ----------
+// ---------- Viewport fix  ----------
 function setVHVar() {
   const vh = window.innerHeight * 0.01;
   document.documentElement.style.setProperty('--vh', `${vh}px`);
