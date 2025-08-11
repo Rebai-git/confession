@@ -74,17 +74,17 @@ const lines8  = [
   "I really want to heal you..." , "and make you the happiest person in the world"
 ];
 const lines9  = [
-  "but instead,because of overthinking and my lack of social skills...", "I've made thing awkward, annoying and put even more emotional burden on you",
-  "I'm really sorry about that"
+  "but instead,because of my overthinking and my lack of social skills...", "I've made thing awkward, annoying and put even more emotional burden on you",
+  "I feel really bad about it and really sorry about that"
 ];
 const lines10 = [
   "Now, I want to know how you feel about me and all of this. And..."
 ];
 const lines11 = [
-  "If you'd love to give me a chance, I would love to fix all my mistakes and...", "I will try to be the person you deserve"
+  "If you'd love to give me a chance, I would love to fix all my mistakes and...", "I will try my best to be the person you deserve"
 ];
 const lines12 = [
-  "Ofcourse, it is obviously fine if you don't feel the same", " I'd still love to be your friend if you're okay with it", " After all, it would be my loss to let go of someone as amazing as you!!"
+  "Of course, it is obviously fine if you don't feel the same", " I'd still love to be your friend if you're okay with it", " After all, it would be my loss to let go of someone as amazing as you!!"
 ];
 const lines13 = [
   "Thanks for reading till the end."
