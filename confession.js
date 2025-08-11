@@ -68,7 +68,7 @@ const lines6 = [
   "I really want to support your fangirling!"
 ];
 const lines7  = [
-  "I really want to treat you the best", "and I want to support in every possible way"
+  "I really want to treat you the best", "and I want to support you in every possible way"
 ];
 const lines8  = [
   "I really want to heal you..." , "and make you the happiest person in the world"
