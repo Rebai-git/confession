@@ -84,7 +84,7 @@ const lines11 = [
   "If you'd love to give me a chance, I would love to fix all my mistakes and...", "I will try my best to be the person you deserve"
 ];
 const lines12 = [
-  "Of course, it is obviously fine if you don't feel the same", " I'd still love to have platonic relationship if you're okay with it", " After all, it would be my loss to let go of someone as amazing as you!!"
+  "Of course, it is obviously fine if you don't feel the same", " I’d still love to have a platonic relationship if you’re okay with it", " After all, it would be my loss to let go of someone as amazing as you!!"
 ];
 const lines13 = [
   "Thanks for reading till the end."
