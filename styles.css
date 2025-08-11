@@ -79,7 +79,9 @@ html, body {
 @media (min-width: 560px){ .pixel-text{ font-size: 24px; } }
 
 /* Cursor for typing stages */
-#overlay::after, #overlay3::after, #overlay4::after, #overlay5::after{
+#overlay::after, #overlay3::after, #overlay4::after, #overlay5::after,
+#overlay6::after, #overlay7::after, #overlay8::after, #overlay9::after,
+#overlay10::after, #overlay11::after, #overlay12::after, #overlay13::after{
   content: '|';
   display: inline-block;
   margin-left: 2px;
@@ -88,7 +90,7 @@ html, body {
 @keyframes blink { 0%,49%{opacity:1;} 50%,100%{opacity:0;} }
 #initialText::after{ content: none; }
 
-/* Stage 4 black background */
+/* Stage 4/13 black background */
 .black-screen{
   background: #000;
   width: 100vw;
