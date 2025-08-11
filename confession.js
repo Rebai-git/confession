@@ -54,31 +54,44 @@ const overlay13  = document.getElementById('overlay13');
 const lines2 = [
   "Hi Sts!!",
   "I want to tell you something",
-  "For a long time, I couldn't tell you this"
 ];
 const lines3 = [
-  "I really really like you!"
+  "I really really love you!"
 ];
 const lines4 = [
-  "I really want to do a lot of thing for you."
+  "I really want to do a lot of thing for you..."
 ];
 const lines5 = [
-  "I really want to listen to your yappings"
+  "I really want to listen to your yappings!"
 ];
 const lines6 = [
   "I really want to support your fangirling!"
 ];
 
-// You can customize these:
-const lines7  = ["I love your smile."];
-const lines8  = ["I love your stories."]; 
-const lines9  = ["I love your energy."];
+const lines7  = [
+  "I really want to treat you better than anyone can..", "and I want to support in every possible way"
+];
+const lines8  = [
+  "I really want to heal you..." , "and make you the happiest person in the world"
+]; 
+const lines9  = [
+  "but instead,because of overthinking and my lack of social skills...", "I've made thing awkward, annoying and put even more emotional burden on you"
+  , "I'm really sorry about that"
+];
 
-const lines10 = ["I want to spend more time with you."];
-const lines11 = ["You make my days brighter."];
-const lines12 = ["Let’s make more memories together."];
+const lines10 = [
+  "Now, I want to know how you feel about me and all of this. And..."
+];
+const lines11 = [
+  "If you'd love to give me a chance, I would love to fix all my mistakes and...", "I'd love to learn how to treat you well and love to be someone special to you"
+];
+const lines12 = [
+  "Ofcourse, it is obviously fine if you don't feel the same", " I'd still love to be your friend if you're okay with it", " After all, it would be my loss to let go of someone as amazing as you!!"
+];
 
-const lines13 = ["Thanks for your time."];
+const lines13 = [
+  "Thanks for reading till the end."
+];
 
 // ---------- STATE ----------
 let currentStage = 1;
