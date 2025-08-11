@@ -74,7 +74,7 @@ const lines8  = [
   "I really want to heal you..." , "and make you the happiest person in the world"
 ];
 const lines9  = [
-  "but instead,because of my overthinking and my lack of social skills...", "I've made thing awkward, annoying and put even more emotional burden on you",
+  "but instead,because of my overthinking and my lack of social skills...", "I've made things awkward, annoying and put even more emotional burden on you",
   "I'm really sorry about that"
 ];
 const lines10 = [
@@ -323,12 +323,12 @@ function advanceForCurrent(){
   if (currentStage === 1) {
     if (!playedStage1) {
       playedStage1 = true;
-      initialText.textContent = "";
+      initialText.textContent = "Touch bottom-half to next and upper-half to previous";
       if (initialImg.dataset && initialImg.dataset.anim) initialImg.src = initialImg.dataset.anim;
       setTimeout(() => {
         // after a short beat, allow moving to stage 2
         readyForStage2 = true;
-      }, 3500);
+      }, 1500);
       return;
     }
     if (readyForStage2) { startStage2(); return; }
