@@ -328,7 +328,7 @@ function advanceForCurrent(){
       setTimeout(() => {
         // after a short beat, allow moving to stage 2
         readyForStage2 = true;
-      }, 1500);
+      }, 2500);
       return;
     }
     if (readyForStage2) { startStage2(); return; }
