@@ -14,41 +14,41 @@ const overlay3 = document.getElementById('overlay3');
 const stage4   = document.getElementById('stage4');
 const overlay4 = document.getElementById('overlay4');
 
-const stage5   = document.getElementById('stage5');
+const stage5    = document.getElementById('stage5');
 const stage5Img = document.getElementById('stage5Img');
-const overlay5 = document.getElementById('overlay5');
+const overlay5  = document.getElementById('overlay5');
 
-const stage6   = document.getElementById('stage6');
+const stage6    = document.getElementById('stage6');
 const stage6Img = document.getElementById('stage6Img');
-const overlay6 = document.getElementById('overlay6');
+const overlay6  = document.getElementById('overlay6');
 
 // NEW: 7–13
-const stage7   = document.getElementById('stage7');
+const stage7    = document.getElementById('stage7');
 const stage7Img = document.getElementById('stage7Img');
-const overlay7 = document.getElementById('overlay7');
+const overlay7  = document.getElementById('overlay7');
 
-const stage8   = document.getElementById('stage8');
+const stage8    = document.getElementById('stage8');
 const stage8Img = document.getElementById('stage8Img');
-const overlay8 = document.getElementById('overlay8');
+const overlay8  = document.getElementById('overlay8');
 
-const stage9   = document.getElementById('stage9');
+const stage9    = document.getElementById('stage9');
 const stage9Img = document.getElementById('stage9Img');
-const overlay9 = document.getElementById('overlay9');
+const overlay9  = document.getElementById('overlay9');
 
-const stage10   = document.getElementById('stage10');
+const stage10    = document.getElementById('stage10');
 const stage10Img = document.getElementById('stage10Img');
 const overlay10  = document.getElementById('overlay10');
 
-const stage11   = document.getElementById('stage11');
+const stage11    = document.getElementById('stage11');
 const stage11Img = document.getElementById('stage11Img');
 const overlay11  = document.getElementById('overlay11');
 
-const stage12   = document.getElementById('stage12');
+const stage12    = document.getElementById('stage12');
 const stage12Img = document.getElementById('stage12Img');
 const overlay12  = document.getElementById('overlay12');
 
 const stage13   = document.getElementById('stage13');
-const overlay13  = document.getElementById('overlay13');
+const overlay13 = document.getElementById('overlay13');
 
 // ---------- DIALOGUE ----------
 const lines2 = [
@@ -67,28 +67,25 @@ const lines5 = [
 const lines6 = [
   "I really want to support your fangirling!"
 ];
-
 const lines7  = [
-  "I really want to treat you better than anyone can..", "and I want to support in every possible way"
+  "I really want to treat you the best", "and I want to support in every possible way"
 ];
 const lines8  = [
   "I really want to heal you..." , "and make you the happiest person in the world"
-]; 
-const lines9  = [
-  "but instead,because of overthinking and my lack of social skills...", "I've made thing awkward, annoying and put even more emotional burden on you"
-  , "I'm really sorry about that"
 ];
-
+const lines9  = [
+  "but instead,because of overthinking and my lack of social skills...", "I've made thing awkward, annoying and put even more emotional burden on you",
+  "I'm really sorry about that"
+];
 const lines10 = [
   "Now, I want to know how you feel about me and all of this. And..."
 ];
 const lines11 = [
-  "If you'd love to give me a chance, I would love to fix all my mistakes and...", "I'd love to learn how to treat you well and love to be someone special to you"
+  "If you'd love to give me a chance, I would love to fix all my mistakes and...", "I will try to be the person you deserve"
 ];
 const lines12 = [
   "Ofcourse, it is obviously fine if you don't feel the same", " I'd still love to be your friend if you're okay with it", " After all, it would be my loss to let go of someone as amazing as you!!"
 ];
-
 const lines13 = [
   "Thanks for reading till the end."
 ];
@@ -190,24 +187,6 @@ function typeLine(text, el, done) {
   })();
 }
 
-// Finish the currently typing line instantly (no movement)
-function completeCurrentIfTyping(){
-  if (!typing) return false;
-  const n = currentStage;
-  const arr = linesFor(n);
-  const i = getIdx(n);
-  const el = overlayFor(n);
-  if (!arr.length || i >= arr.length) { typing = false; return true; }
-  el.textContent = arr[i]; // fill whole line
-  // If this stage animates during typing then reverts, force static frame now
-  if (stageType(n) === 'animStatic') {
-    const img = imgFor(n);
-    if (img && img.dataset && img.dataset.static) img.src = img.dataset.static;
-  }
-  typing = false;
-  return true;
-}
-
 // Re-render a line when moving backwards or jumping
 function renderLine(n, i){
   const arr = linesFor(n);
@@ -235,14 +214,20 @@ function renderLine(n, i){
 
 // ---------- ADVANCERS (forward) ----------
 function advanceStage2() {
-  const n=2, arr=lines2; if (typing || idx2 >= arr.length) return;
-  confessionImg.src = confessionImg.dataset.anim;
-  typeLine(arr[idx2], overlay, () => { confessionImg.src = confessionImg.dataset.static; idx2++; });
+  const arr=lines2; if (typing || idx2 >= arr.length) return;
+  if (confessionImg.dataset && confessionImg.dataset.anim) confessionImg.src = confessionImg.dataset.anim;
+  typeLine(arr[idx2], overlay, () => {
+    if (confessionImg.dataset && confessionImg.dataset.static) confessionImg.src = confessionImg.dataset.static;
+    idx2++;
+  });
 }
 function advanceStage3() {
-  const n=3, arr=lines3; if (typing || idx3 >= arr.length) return;
-  nextImg.src = nextImg.dataset.anim;
-  typeLine(arr[idx3], overlay3, () => { nextImg.src = nextImg.dataset.static; idx3++; });
+  const arr=lines3; if (typing || idx3 >= arr.length) return;
+  if (nextImg.dataset && nextImg.dataset.anim) nextImg.src = nextImg.dataset.anim;
+  typeLine(arr[idx3], overlay3, () => {
+    if (nextImg.dataset && nextImg.dataset.static) nextImg.src = nextImg.dataset.static;
+    idx3++;
+  });
 }
 function advanceStage4() {
   if (typing || idx4 >= lines4.length) return;
@@ -250,21 +235,57 @@ function advanceStage4() {
 }
 function advanceStage5() {
   if (typing || idx5 >= lines5.length) return;
-  stage5Img.src = stage5Img.dataset.anim;
+  if (stage5Img.dataset && stage5Img.dataset.anim) stage5Img.src = stage5Img.dataset.anim;
   typeLine(lines5[idx5], overlay5, () => { idx5++; });
 }
 function advanceStage6() {
   if (typing || idx6 >= lines6.length) return;
-  stage6Img.src = stage6Img.dataset.anim;
+  if (stage6Img.dataset && stage6Img.dataset.anim) stage6Img.src = stage6Img.dataset.anim;
   typeLine(lines6[idx6], overlay6, () => { idx6++; });
 }
-function advanceStage7() { if (typing || idx7 >= lines7.length) return; stage7Img.src = stage7Img.dataset.anim; typeLine(lines7[idx7], overlay7, () => { idx7++; }); }
-function advanceStage8() { if (typing || idx8 >= lines8.length) return; stage8Img.src = stage8Img.dataset.anim; typeLine(lines8[idx8], overlay8, () => { idx8++; }); }
-function advanceStage9() { if (typing || idx9 >= lines9.length) return; stage9Img.src = stage9Img.dataset.anim; typeLine(lines9[idx9], overlay9, () => { idx9++; }); }
-function advanceStage10(){ if (typing || idx10>=lines10.length) return; stage10Img.src=stage10Img.dataset.anim; typeLine(lines10[idx10],overlay10,()=>{stage10Img.src=stage10Img.dataset.static; idx10++;}); }
-function advanceStage11(){ if (typing || idx11>=lines11.length) return; stage11Img.src=stage11Img.dataset.anim; typeLine(lines11[idx11],overlay11,()=>{stage11Img.src=stage11Img.dataset.static; idx11++;}); }
-function advanceStage12(){ if (typing || idx12>=lines12.length) return; stage12Img.src=stage12Img.dataset.anim; typeLine(lines12[idx12],overlay12,()=>{stage12Img.src=stage12Img.dataset.static; idx12++;}); }
-function advanceStage13(){ if (typing || idx13>=lines13.length) return; typeLine(lines13[idx13], overlay13, ()=>{ idx13++; }); }
+function advanceStage7() {
+  if (typing || idx7 >= lines7.length) return;
+  if (stage7Img.dataset && stage7Img.dataset.anim) stage7Img.src = stage7Img.dataset.anim;
+  typeLine(lines7[idx7], overlay7, () => { idx7++; });
+}
+function advanceStage8() {
+  if (typing || idx8 >= lines8.length) return;
+  if (stage8Img.dataset && stage8Img.dataset.anim) stage8Img.src = stage8Img.dataset.anim;
+  typeLine(lines8[idx8], overlay8, () => { idx8++; });
+}
+function advanceStage9() {
+  if (typing || idx9 >= lines9.length) return;
+  if (stage9Img.dataset && stage9Img.dataset.anim) stage9Img.src = stage9Img.dataset.anim;
+  typeLine(lines9[idx9], overlay9, () => { idx9++; });
+}
+function advanceStage10(){
+  if (typing || idx10>=lines10.length) return;
+  if (stage10Img.dataset && stage10Img.dataset.anim) stage10Img.src=stage10Img.dataset.anim;
+  typeLine(lines10[idx10], overlay10, () => {
+    if (stage10Img.dataset && stage10Img.dataset.static) stage10Img.src=stage10Img.dataset.static;
+    idx10++;
+  });
+}
+function advanceStage11(){
+  if (typing || idx11>=lines11.length) return;
+  if (stage11Img.dataset && stage11Img.dataset.anim) stage11Img.src=stage11Img.dataset.anim;
+  typeLine(lines11[idx11], overlay11, () => {
+    if (stage11Img.dataset && stage11Img.dataset.static) stage11Img.src=stage11Img.dataset.static;
+    idx11++;
+  });
+}
+function advanceStage12(){
+  if (typing || idx12>=lines12.length) return;
+  if (stage12Img.dataset && stage12Img.dataset.anim) stage12Img.src=stage12Img.dataset.anim;
+  typeLine(lines12[idx12], overlay12, () => {
+    if (stage12Img.dataset && stage12Img.dataset.static) stage12Img.src=stage12Img.dataset.static;
+    idx12++;
+  });
+}
+function advanceStage13(){
+  if (typing || idx13>=lines13.length) return;
+  typeLine(lines13[idx13], overlay13, ()=>{ idx13++; });
+}
 
 // ---------- STARTERS ----------
 function startStage2(){ setActive(2); idx2=0; overlay.textContent=""; advanceStage2(); }
@@ -297,19 +318,23 @@ function startStage(n){
     case 10: startStage10(); break; case 11: startStage11(); break; case 12: startStage12(); break; case 13: startStage13(); break;
   }
 }
+
 function advanceForCurrent(){
-  // original forward logic preserved
   if (currentStage === 1) {
     if (!playedStage1) {
       playedStage1 = true;
       initialText.textContent = "";
-      initialImg.src = initialImg.dataset.anim;
-      setTimeout(() => { typeLine("", initialText, () => { readyForStage2 = true; }); }, 3500);
+      if (initialImg.dataset && initialImg.dataset.anim) initialImg.src = initialImg.dataset.anim;
+      setTimeout(() => {
+        // after a short beat, allow moving to stage 2
+        readyForStage2 = true;
+      }, 3500);
       return;
     }
     if (readyForStage2) { startStage2(); return; }
     return;
   }
+
   const n = currentStage;
   const arr = linesFor(n);
   const i = getIdx(n);
@@ -324,9 +349,7 @@ function advanceForCurrent(){
 
   // move to next stage
   const next = nextStageOf(n);
-  if (next !== n) {
-    startStage(next);
-  }
+  if (next !== n) startStage(next);
 }
 
 function goPrev(){
@@ -344,26 +367,21 @@ function goPrev(){
   }
 
   // Otherwise go to previous stage (and show its last line fully)
-  let prev = prevStageOf(n);
-
-  // Special handling: coming back from stage4 fade (make sure stage1..3 hidden already)
+  const prev = prevStageOf(n);
   setActive(prev);
 
   const prevArr = linesFor(prev);
   if (!prevArr.length) {
-    // stages without lines (like 1 intro before typing unlock)
     if (prev === 1) {
-      // Back to intro: show "Touch here" again
-      initialImg.src = initialImg.dataset.anim || initialImg.src;
+      if (initialImg.dataset && initialImg.dataset.anim) initialImg.src = initialImg.dataset.anim;
       initialText.textContent = "Touch here";
       playedStage1 = true; // so a bottom-half tap goes forward
     }
     return;
   }
 
-  // Set index to last line and render it
   const lastIdx = prevArr.length - 1;
-  setIdx(prev, lastIdx + 1); // since our idx represents "next to show", we want it as if last was completed
+  setIdx(prev, lastIdx + 1); // idx means "next to show"
   renderLine(prev, lastIdx);
 }
 
@@ -373,11 +391,10 @@ function goNext(){
 
 // ---------- TAP HANDLER (position-aware) ----------
 document.addEventListener('pointerdown', (e) => {
-  // If typing, complete current line first
-  if (typing) { completeCurrentIfTyping(); return; }
+  // Block ALL input while a line is typing (no skipping)
+  if (typing) return;
 
   const isBottomHalf = e.clientY >= (window.innerHeight / 2);
-
   if (isBottomHalf) {
     goNext();
   } else {
